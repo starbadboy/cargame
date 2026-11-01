@@ -3,7 +3,7 @@
 const fs = require('fs'), vm = require('vm');
 const ctx = { console };
 vm.createContext(ctx);
-for (const f of ['art.js', 'vehicles.js', 'scenes.js', 'sound.js']) vm.runInContext(fs.readFileSync(`${__dirname}/${f}`, 'utf8'), ctx);
+for (const f of ['art.js', 'vehicles.js', 'levels.js', 'sound.js']) vm.runInContext(fs.readFileSync(`${__dirname}/${f}`, 'utf8'), ctx);
 const { SCENES, VEHICLES, PLACES, PROBLEMS, FX, AFTERS, SOUNDS } = vm.runInContext('({ SCENES, VEHICLES, PLACES, PROBLEMS, FX, AFTERS, SOUNDS })', ctx);
 const assert = (ok, msg) => { if (!ok) { console.error('✗', msg); process.exitCode = 1; } };
 
